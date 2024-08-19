@@ -14,9 +14,9 @@ function App() {
     const savedContacts = JSON.parse(
       window.localStorage.getItem("saved-contacts")
     );
-    if (savedContacts.length !== 0) {
-      return savedContacts;
-    } else return initialContacts;
+    return savedContacts && savedContacts.length > 0
+      ? savedContacts
+      : initialContacts;
   });
   const [filter, setFilter] = useState("");
   useEffect(() => {
