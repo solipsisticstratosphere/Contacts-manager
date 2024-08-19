@@ -1,0 +1,24 @@
+.contactForm {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.input {
+  width: 200px;
+}
+.field {
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.submit {
+  font-size: small;
+  margin-left: 70px;
+  justify-content: center;
+  display: flex;
+  width: 120px;
+  height: 35px;
+}
