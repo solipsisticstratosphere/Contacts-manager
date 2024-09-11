@@ -3,6 +3,8 @@ import { useId } from "react";
 import { nanoid } from "nanoid";
 import * as Yup from "yup";
 import css from "./ContactForm.module.css";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../redux/actions";
 
 const FeedbackSchema = Yup.object().shape({
   username: Yup.string()
@@ -14,21 +16,26 @@ const FeedbackSchema = Yup.object().shape({
     .max(30, "Too Long!")
     .required("Required"),
 });
+
 const initialValues = {
   username: "",
   telephone: "",
 };
 
-export default function ContactForm({ onAdd }) {
+export default function ContactForm() {
+  const dispatch = useDispatch();
   const nameFieldId = useId();
   const numberFieldId = useId();
+
   const handleSubmit = (values, actions) => {
-    onAdd({
-      id: nanoid(),
-      name: values.username,
-      number: values.telephone,
-    });
-    actions.resetForm();
+    dispatch(
+      addContact({
+        id: nanoid(),
+        name: values.username,
+        number: values.telephone,
+      })
+    );
+    actions.resetForm(); // Reset the form after successful submission
   };
 
   return (
