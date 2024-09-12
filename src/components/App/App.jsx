@@ -3,7 +3,7 @@ import ContactForm from "../ContactForm/ContactForm";
 import ContactList from "../ContactList/ContactList";
 import SearchBox from "../SearchBox/SearchBox";
 import { addContact, deleteContact, setFilter } from "../../redux/actions";
-
+import { useEffect } from "react";
 function App() {
   const contacts = useSelector((state) => state.contacts.items);
   const filter = useSelector((state) => state.filter); // Get filter from state
@@ -25,7 +25,9 @@ function App() {
   const visibleContacts = contacts.filter(
     (contact) => contact.name.toLowerCase().includes(filter.toLowerCase()) // Filter by name
   );
-
+  useEffect(() => {
+    window.localStorage.setItem("saved-contacts", JSON.stringify(contacts));
+  }, [contacts]);
   return (
     <div>
       <h1>Phonebook</h1>

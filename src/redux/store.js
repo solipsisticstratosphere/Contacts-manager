@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import contactsData from "../contacts.json";
+import filterReducer from "./filtersSlice";
+
 const initialState = {
   contacts: {
     items: contactsData,
   },
-  filter: "", // Add this line to initialize the filter
+  filter: "",
 };
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -24,8 +26,21 @@ const rootReducer = (state = initialState, action) => {
         filter: action.payload,
       };
     }
+    case "contacts/addContact": {
+      return {
+        ...state,
+        contacts: {
+          items: [...state.contacts.items, action.payload],
+        },
+      };
+    }
   }
   return state;
 };
 
-export const store = configureStore({ reducer: rootReducer });
+export const store = configureStore({
+  reducer: {
+    contacts: contactsReducer,
+    filter: filterReducer,
+  },
+});
