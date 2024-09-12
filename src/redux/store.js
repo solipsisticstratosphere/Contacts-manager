@@ -21,18 +21,11 @@ const persistedContactsReducer = persistReducer(
   },
   contactsReducer
 );
-const persistedFilterReducer = persistReducer(
-  {
-    key: "filter",
-    storage,
-    whitelist: ["filter"],
-  },
-  filterReducer
-);
+
 export const store = configureStore({
   reducer: {
     contacts: persistedContactsReducer,
-    filter: persistedFilterReducer,
+    filter: filterReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -43,38 +36,3 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-// const initialState = {
-//   contacts: {
-//     items: contactsData,
-//   },
-//   filter: "",
-// };
-// const rootReducer = (state = initialState, action) => {
-//   switch (action.type) {
-//     case "contacts/deleteContact": {
-//       return {
-//         ...state,
-//         contacts: {
-//           items: state.contacts.items.filter(
-//             (contact) => contact.id !== action.payload
-//           ),
-//         },
-//       };
-//     }
-//     case "contacts/setFilter": {
-//       return {
-//         ...state,
-//         filter: action.payload,
-//       };
-//     }
-//     case "contacts/addContact": {
-//       return {
-//         ...state,
-//         contacts: {
-//           items: [...state.contacts.items, action.payload],
-//         },
-//       };
-//     }
-//   }
-//   return state;
-// };

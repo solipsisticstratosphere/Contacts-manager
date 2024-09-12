@@ -1,15 +1,21 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Contact from "../Contact/Contact";
-import { deleteContact } from "../../redux/actions"; // Import the action
+import { deleteContact } from "../../redux/actions";
 
-export default function ContactList({ contacts }) {
+export default function ContactList() {
+  const contacts = useSelector((state) => state.contacts.contacts);
+  const filter = useSelector((state) => state.filter.filter);
   return (
     <ul>
-      {contacts.map((contact) => (
-        <li key={contact.id}>
-          <Contact contactCard={contact} />
-        </li>
-      ))}
+      {contacts
+        .filter((contact) =>
+          contact.name.toLowerCase().includes(filter.toLowerCase())
+        )
+        .map((contact) => (
+          <li key={contact.id}>
+            <Contact contactCard={contact} />
+          </li>
+        ))}
     </ul>
   );
 }
