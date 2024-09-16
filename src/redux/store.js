@@ -9,22 +9,13 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage";
+
 import filterReducer from "./filtersSlice";
 import contactsReducer from "./contactsSlice";
 
-const persistedContactsReducer = persistReducer(
-  {
-    key: "contacts",
-    storage,
-    whitelist: ["contacts"],
-  },
-  contactsReducer
-);
-
 export const store = configureStore({
   reducer: {
-    contacts: persistedContactsReducer,
+    contacts: contactsReducer,
     filter: filterReducer,
   },
   middleware: (getDefaultMiddleware) =>
