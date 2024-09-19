@@ -49,7 +49,7 @@ const slice = createSlice({
 
 export default slice.reducer;
 
-export const selectVisibleContacts = createSelector(
+export const selectFilteredContacts = createSelector(
   [getContacts, getFilter],
   (contacts, filter) => {
     return contacts.filter((contact) =>
