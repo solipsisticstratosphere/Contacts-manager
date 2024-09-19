@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { fetchContacts, addContact, deleteContact } from "./contactsOps";
+import { getContacts, getFilter } from "./selectors";
 
 const handlePending = (state) => {
   state.loading = true;
@@ -43,43 +44,16 @@ const slice = createSlice({
         state.contacts.splice(index, 1);
       })
       .addCase(deleteContact.rejected, handleRejected);
-    // addContact(state, action) {
-    //   return {
-    //     ...state,
-    //     contacts: [...state.contacts, action.payload],
-    //   };
-    // },
-    // deleteContact(state, action) {
-    //   return {
-    //     ...state,
-    //     contacts: state.contacts.filter(
-    //       (contact) => contact.id !== action.payload
-    //     ),
-    //   };
-    // },
   },
 });
 
 export default slice.reducer;
-// export default function contactsReducer(state = initialState, action) {
-//   switch (action.type) {
-//     case "contacts/addContact": {
-//       return {
-//         ...state,
-//         contacts: [...state.contacts, action.payload],
-//       };
-//     }
-//     case "contacts/deleteContact": {
-//       return {
-//         ...state,
-//         contacts: state.contacts.filter(
-//           (contact) => contact.id !== action.payload
-//         ),
-//       };
-//     }
-//     default:
-//       return state.contacts.length === 0
-//         ? { ...state, contacts: contactsData }
-//         : state;
-//   }
-// }
+
+export const selectVisibleContacts = createSelector(
+  [getContacts, getFilter],
+  (contacts, filter) => {
+    return contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  }
+);
