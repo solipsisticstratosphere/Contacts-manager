@@ -5,6 +5,11 @@ import SearchBox from "../SearchBox/SearchBox";
 import { useEffect } from "react";
 import { fetchContacts } from "../../redux/contactsOps";
 import { selectLoading, selectError } from "../../redux/selectors";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "../../pages/HomePage/HomePage";
+import { RestrictedRoute } from "../RestrictedRoute/RestrictedRoute";
+import RegisterPage from "../../pages/RegisterPage/RegisterPage";
+import { Layout } from "../Layout/Layout";
 function App() {
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
@@ -13,13 +18,28 @@ function App() {
     dispatch(fetchContacts());
   }, [dispatch]);
   return (
-    <div>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      {loading && !error && <b>Request in progress...</b>}
-      <ContactList />
-    </div>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute
+              redirectTo="/contacts"
+              component={<RegisterPage />}
+            />
+          }
+        />
+        <Route path="/contacts" />
+      </Routes>
+    </Layout>
+    // <div>
+    //   <h1>Phonebook</h1>
+    //   <ContactForm />
+    //   <SearchBox />
+    //   {loading && !error && <b>Request in progress...</b>}
+    //   <ContactList />
+    // </div>
   );
 }
 
