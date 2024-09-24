@@ -32,8 +32,8 @@ export const LoginForm = () => {
       .then(() => {
         console.log("login success");
       })
-      .catch(() => {
-        console.log("login error");
+      .catch((error) => {
+        console.error("Login error:", error);
       });
     actions.resetForm();
   };
