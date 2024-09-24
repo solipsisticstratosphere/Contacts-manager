@@ -62,7 +62,7 @@ export const LoginForm = () => {
           type="email"
           name="email"
           id={emailFieldId}
-          autoComplete="email" // Добавляем атрибут
+          autoComplete="email"
         />
         <ErrorMessage
           className={css.errorMessage}
@@ -78,6 +78,7 @@ export const LoginForm = () => {
           type="password"
           name="password"
           id={passwordFieldId}
+          autoComplete="current-password"
         />
         <ErrorMessage
           className={css.errorMessage}
