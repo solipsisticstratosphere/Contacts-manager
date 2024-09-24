@@ -22,18 +22,19 @@ export const LoginForm = () => {
   const passwordFieldId = useId();
 
   const handleSubmit = (values, actions) => {
-    dispatch(
-      logIn({
-        email: values.email,
-        password: values.password,
-      })
-    )
+    const credentials = {
+      email: values.email,
+      password: values.password,
+    };
+    console.log("Credentials being sent:", credentials); // Логируем данные для проверки
+
+    dispatch(logIn(credentials))
       .unwrap()
       .then(() => {
-        console.log("login success");
+        console.log("Login success");
       })
       .catch((error) => {
-        console.error("Login error:", error);
+        console.error("Login error:", error.response?.data || error.message);
       });
     actions.resetForm();
   };
