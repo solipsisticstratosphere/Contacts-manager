@@ -26,7 +26,7 @@ export const LoginForm = () => {
       email: values.email,
       password: values.password,
     };
-    console.log("Credentials being sent:", credentials); // Логируем данные для проверки
+    console.log(credentials);
 
     dispatch(logIn(credentials))
       .unwrap()
@@ -35,14 +35,6 @@ export const LoginForm = () => {
       })
       .catch((error) => {
         console.error("Error during login:", error);
-        if (error.response) {
-          console.error("Response data:", error.response.data);
-          console.error("Response status:", error.response.status);
-        } else if (error.request) {
-          console.error("No response received:", error.request);
-        } else {
-          console.error("Error setting up request:", error.message);
-        }
       });
     actions.resetForm();
   };
