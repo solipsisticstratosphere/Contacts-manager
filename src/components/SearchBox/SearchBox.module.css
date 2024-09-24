@@ -1,6 +1,35 @@
 .container {
-  margin-top: 15px;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  color: #495057;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+input:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
+  outline: none;
 }

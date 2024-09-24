@@ -1,24 +1,69 @@
 .contactForm {
-  padding: 15px;
+  padding: 20px;
+  background-color: #f8f9fa;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  border-radius: 5px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 }
-.input {
-  width: 200px;
-}
+
 .field {
-  padding-bottom: 10px;
+  padding-bottom: 15px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
+
+.field label {
+  font-weight: 500;
+  color: #495057;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.input:focus {
+  border-color: #80bdff;
+  box-shadow: 0 0 5px rgba(128, 189, 255, 0.5);
+}
+
+.errorMessage {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
 .submit {
-  font-size: small;
-  margin-left: 70px;
-  justify-content: center;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
   display: flex;
-  width: 120px;
-  height: 35px;
+  justify-content: center;
+  align-items: center;
+}
+
+.submit:hover {
+  background-color: #0056b3;
+}
+
+.submit:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
