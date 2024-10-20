@@ -1,5 +1,5 @@
 .wrapper {
-  max-width: 960px;
-  margin: 0px auto;
-  padding: 0 16px;
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
 }

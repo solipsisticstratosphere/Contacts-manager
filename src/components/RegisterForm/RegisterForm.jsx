@@ -43,61 +43,63 @@ export const RegisterForm = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={RegisterShema}
-    >
-      <Form className={css.form}>
-        <label className={css.label} htmlFor={nameFieldId}>
-          Name
-        </label>
-        <Field
-          className={css.input}
-          type="text"
-          name="username"
-          id={nameFieldId}
-        />
-        <ErrorMessage
-          className={css.errorMessage}
-          name="username"
-          component="span"
-        />
+    <div className={css.wrapper}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={RegisterShema}
+      >
+        <Form className={css.form}>
+          <label className={css.label} htmlFor={nameFieldId}>
+            Name
+          </label>
+          <Field
+            className={css.input}
+            type="text"
+            name="username"
+            id={nameFieldId}
+          />
+          <ErrorMessage
+            className={css.errorMessage}
+            name="username"
+            component="span"
+          />
 
-        <label className={css.label} htmlFor={emailFieldId}>
-          Email
-        </label>
-        <Field
-          className={css.input}
-          type="email"
-          name="email"
-          id={emailFieldId}
-        />
-        <ErrorMessage
-          className={css.errorMessage}
-          name="email"
-          component="span"
-        />
+          <label className={css.label} htmlFor={emailFieldId}>
+            Email
+          </label>
+          <Field
+            className={css.input}
+            type="email"
+            name="email"
+            id={emailFieldId}
+          />
+          <ErrorMessage
+            className={css.errorMessage}
+            name="email"
+            component="span"
+          />
 
-        <label className={css.label} htmlFor={passwordFieldId}>
-          Password
-        </label>
-        <Field
-          className={css.input}
-          type="password"
-          name="password"
-          id={passwordFieldId}
-        />
-        <ErrorMessage
-          className={css.errorMessage}
-          name="password"
-          component="span"
-        />
+          <label className={css.label} htmlFor={passwordFieldId}>
+            Password
+          </label>
+          <Field
+            className={css.input}
+            type="password"
+            name="password"
+            id={passwordFieldId}
+          />
+          <ErrorMessage
+            className={css.errorMessage}
+            name="password"
+            component="span"
+          />
 
-        <button className={css.submitButton} type="submit">
-          Register
-        </button>
-      </Form>
-    </Formik>
+          <button className={css.submitButton} type="submit">
+            Register
+          </button>
+        </Form>
+      </Formik>
+    </div>
   );
 };

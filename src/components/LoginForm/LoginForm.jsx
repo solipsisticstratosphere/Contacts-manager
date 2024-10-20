@@ -1,6 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
-
 import * as Yup from "yup";
 import { useId } from "react";
 import css from "./LoginForm.module.css";
@@ -19,7 +18,6 @@ const initialValues = {
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const emailFieldId = useId();
-  ``;
   const passwordFieldId = useId();
 
   const handleSubmit = (values, actions) => {
@@ -41,48 +39,50 @@ export const LoginForm = () => {
   };
 
   return (
-    <Formik
-      initialValues={initialValues}
-      onSubmit={handleSubmit}
-      validationSchema={LoginSchema}
-    >
-      <Form className={css.form}>
-        <label className={css.label} htmlFor={emailFieldId}>
-          Email
-        </label>
-        <Field
-          className={css.input}
-          type="email"
-          name="email"
-          id={emailFieldId}
-          autoComplete="email"
-        />
-        <ErrorMessage
-          className={css.errorMessage}
-          name="email"
-          component="span"
-        />
+    <div className={css.wrapper}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={LoginSchema}
+      >
+        <Form className={css.form}>
+          <label className={css.label} htmlFor={emailFieldId}>
+            Email
+          </label>
+          <Field
+            className={css.input}
+            type="email"
+            name="email"
+            id={emailFieldId}
+            autoComplete="email"
+          />
+          <ErrorMessage
+            className={css.errorMessage}
+            name="email"
+            component="span"
+          />
 
-        <label className={css.label} htmlFor={passwordFieldId}>
-          Password
-        </label>
-        <Field
-          className={css.input}
-          type="password"
-          name="password"
-          id={passwordFieldId}
-          autoComplete="current-password"
-        />
-        <ErrorMessage
-          className={css.errorMessage}
-          name="password"
-          component="span"
-        />
+          <label className={css.label} htmlFor={passwordFieldId}>
+            Password
+          </label>
+          <Field
+            className={css.input}
+            type="password"
+            name="password"
+            id={passwordFieldId}
+            autoComplete="current-password"
+          />
+          <ErrorMessage
+            className={css.errorMessage}
+            name="password"
+            component="span"
+          />
 
-        <button className={css.submitButton} type="submit">
-          Login
-        </button>
-      </Form>
-    </Formik>
+          <button className={css.submitButton} type="submit">
+            Login
+          </button>
+        </Form>
+      </Formik>
+    </div>
   );
 };
